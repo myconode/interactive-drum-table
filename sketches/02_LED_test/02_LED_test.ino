@@ -22,6 +22,7 @@
 // 4) Disconnect from computer, turn on external power supply (powers Arduino)
 // 5) Each color channel should fade up and down, if not check your connections
 
+// PWM Outputs
 const byte R_CHANNEL = 4;
 const byte G_CHANNEL = 5;
 const byte B_CHANNEL = 6;
@@ -39,7 +40,7 @@ void loop(){
 }
 
 void fade(byte c){
-  for(byte val = 0; val < 255; val++){
+  for(byte val = 0; val <= 255; val++){
     digitalWrite(c, val);
     delay(10);
   }

@@ -13,8 +13,10 @@
 // ------------------------------------------------------------------------
 //
 // Instructions:
-// 1) Make sure your four (or more) potentiometers are hooked up properly
-//    - Potentiometer basics: https://www.arduino.cc/en/tutorial/potentiometer
+// 1) a| Ensure your four (or more) potentiometers are hooked up properly
+//       - Potentiometer basics: https://www.arduino.cc/en/tutorial/potentiometer
+//    b| Ensure toggle switch is configured correctly
+//       - Toggle basics: https://www.arduino.cc/en/tutorial/switch
 // 2) Ensure your Arduino is not connected to an external power supply
 // 3) Connect Arduino to your computer via USB
 // 4) Upload this sketch
@@ -32,22 +34,29 @@ const byte G = A1;
 const byte B = A2;
 const byte S = A3;
 
+// Digital Input
+const byte MODE = 8;
+
 void setup(){
   Serial.begin(9600);
 
-  // Initialize pins
+  // potentiometers
   pinMode(R, INPUT);
   pinMode(G, INPUT);
   pinMode(B, INPUT);
   pinMode(S, INPUT);
+
+  // switch
+  pinMode(MODE, INPUT);
 }
 
 void loop(){
-  Serial.print("RED   :" + map(analogRead(R), 0, 1024, 0, 255) );
-  Serial.print("GREEN :" + map(analogRead(G), 0, 1024, 0, 255) );
-  Serial.print("BLUE  :" + map(analogRead(B), 0, 1024, 0, 255) );
-  Serial.print("SPEED :" + map(analogRead(S), 0, 1024, 20, 400) );
-  Serial.print("----------------------");
+  Serial.println("MODE  :" + digitalRead(MODE));
+  Serial.println("RED   :" + map(analogRead(R), 0, 1024, 0, 255) );
+  Serial.println("GREEN :" + map(analogRead(G), 0, 1024, 0, 255) );
+  Serial.println("BLUE  :" + map(analogRead(B), 0, 1024, 0, 255) );
+  Serial.println("SPEED :" + map(analogRead(S), 0, 1024, 0, 100) );
+  Serial.println("----------------------");
   delay(750);
 }
 
