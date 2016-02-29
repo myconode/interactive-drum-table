@@ -1,4 +1,4 @@
 .*
 
-#
+# Allowed dot files
 !.gitignore
